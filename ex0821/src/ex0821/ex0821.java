@@ -6,7 +6,7 @@ public class ex0821 {
 		System.out.println("Hi");
 		System.out.println("¾È³ç");
 		System.out.println("´ÏÇÏ¿À");
-		
+		System.out.println("Åð±ÙÇÕ½Ã´Ù.");
 		
 	}
 
