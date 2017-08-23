@@ -10,12 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class PmLogin {
 
 	private JFrame frame;
 	private JTextField txtfieldId;
 	private JTextField txtfieldPw;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -117,5 +119,12 @@ public class PmLogin {
 			}
 		});
 		panel_2.add(buttonCreate);
+		
+		passwordField = new JPasswordField();
+		springLayout.putConstraint(SpringLayout.NORTH, passwordField, 6, SpringLayout.SOUTH, panelPw);
+		springLayout.putConstraint(SpringLayout.WEST, passwordField, -139, SpringLayout.EAST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, passwordField, 32, SpringLayout.SOUTH, panelPw);
+		springLayout.putConstraint(SpringLayout.EAST, passwordField, -133, SpringLayout.EAST, frame.getContentPane());
+		frame.getContentPane().add(passwordField);
 	}
 }
