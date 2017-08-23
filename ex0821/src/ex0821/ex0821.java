@@ -12,6 +12,7 @@ public class ex0821 {
 		System.out.println("퇴근합시다.");
 		
 		System.out.println("4조여러분 힘내요");
+		System.out.println("업로드 연습중입니다");
 		
 	}
 
