@@ -471,6 +471,10 @@ public class PmMain {
 		table.setBounds(0, 0, 869, 358);
 		panel_37.add(table);
 		
+		JPanel panel_38 = new JPanel();
+		panel_38.setBounds(85, 557, 275, 82);
+		panel_2.add(panel_38);
+		
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("New tab", null, panel_3, null);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
