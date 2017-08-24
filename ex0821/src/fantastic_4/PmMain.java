@@ -48,7 +48,7 @@ public class PmMain {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1280,1024);
+		frame.setBounds(300, 0, 1280,1024);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel_search = new JPanel();
