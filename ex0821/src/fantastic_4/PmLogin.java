@@ -52,6 +52,10 @@ public class PmLogin {
 	 */
 	// id 체크 메소드
 	public void checkId(){	
+		System.out.println(pmLogin.getId());
+		System.out.println(txtfieldId.getText());
+		System.out.println(new String(passwordField.getPassword()));
+		System.out.println(pmLogin.getPw());
 		if (txtfieldId.getText().equals(pmLogin.getId())
 				&& new String(passwordField.getPassword()).equals(pmLogin.getPw())) {
 			System.out.println("로그인성공");
