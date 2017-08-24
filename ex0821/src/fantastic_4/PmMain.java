@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -15,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
+
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
@@ -23,8 +26,14 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.JTable;
 
@@ -41,6 +50,12 @@ public class PmMain {
 	private JTextField cbb_accounts;
 	private JTextField txt_license;
 	private JTable table;
+	private JTextField textField;
+	
+	  DefaultTableModel model;
+	  Calendar cal = new GregorianCalendar();
+	  JLabel label;
+	  JPanel panel_37;
 
 	/**
 	 * Launch the application.
@@ -70,7 +85,7 @@ public class PmMain {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1280,1024);
+		frame.setBounds(300, 0, 1280,1024);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel_search = new JPanel();
@@ -126,7 +141,7 @@ public class PmMain {
 		panel_5.setBounds(280, 0, -114, 34);
 		panel_list.add(panel_5);
 		
-		JButton btn_find = new JButton("New button");
+		JButton btn_find = new JButton("\uAC80  \uC0C9");
 		btn_find.setBounds(171, 0, 113, 34);
 		panel_list.add(btn_find);
 		
@@ -156,7 +171,9 @@ public class PmMain {
 		);
 		
 		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_1, null);
+		panel_1.setBackground(Color.WHITE);
+		tabbedPane.addTab("\uC0AC\uC6D0 \uC815\uBCF4", null, panel_1, null);
+		//panel_1.
 		panel_1.setLayout(null);
 		
 		JPanel pnl_photo = new JPanel();
@@ -432,10 +449,11 @@ public class PmMain {
 		panel_33.setLayout(gl_panel_33);
 		
 		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_2, null);
+		tabbedPane.addTab("\uADFC\uBB34 \uAD00\uB9AC", null, panel_2, null);
 		panel_2.setLayout(null);
 		
 		JPanel panel_20 = new JPanel();
+		panel_20.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_20.setBounds(63, 81, 146, 28);
 		panel_2.add(panel_20);
 		
@@ -443,40 +461,149 @@ public class PmMain {
 		panel_20.add(label_7);
 		
 		JPanel panel_7 = new JPanel();
-		panel_7.setBounds(221, 81, 286, 28);
+		panel_7.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_7.setBounds(221, 81, 255, 28);
 		panel_2.add(panel_7);
 		
+		JLabel lblNewLabel_3 = new JLabel("name");
+		panel_7.add(lblNewLabel_3);
+		
 		JPanel panel_28 = new JPanel();
+		panel_28.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_28.setBounds(63, 119, 146, 28);
 		panel_2.add(panel_28);
 		
+		JLabel label_8 = new JLabel("\uC0AC  \uC6D0  \uBC88  \uD638");
+		panel_28.add(label_8);
+		
 		JPanel panel_34 = new JPanel();
-		panel_34.setBounds(221, 119, 286, 28);
+		panel_34.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_34.setBounds(221, 119, 255, 28);
 		panel_2.add(panel_34);
 		
+		JLabel lblNum = new JLabel("num");
+		panel_34.add(lblNum);
+		
 		JPanel panel_35 = new JPanel();
-		panel_35.setBounds(519, 81, 146, 28);
+		panel_35.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_35.setBounds(488, 81, 146, 28);
 		panel_2.add(panel_35);
 		
+		JLabel label_9 = new JLabel("\uBD80            \uC11C");
+		panel_35.add(label_9);
+		
 		JPanel panel_36 = new JPanel();
-		panel_36.setBounds(677, 81, 255, 28);
+		panel_36.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_36.setBounds(646, 81, 255, 28);
 		panel_2.add(panel_36);
 		
-		JPanel panel_37 = new JPanel();
-		panel_37.setBounds(63, 157, 869, 358);
+		JLabel lblDiv = new JLabel("div");
+		panel_36.add(lblDiv);
+		
+		panel_37 = new JPanel();
+		panel_37.setBounds(63, 157, 838, 358);
+		
+		SwingCalendar();
+		
 		panel_2.add(panel_37);
 		panel_37.setLayout(null);
 		
-		table = new JTable();
-		table.setBounds(0, 0, 869, 358);
-		panel_37.add(table);
+		/*table = new JTable();
+		table.setBounds(0, 0, 838, 358);*/
+		
+		
+	/*	SwingCalendar calendar = new SwingCalendar();
+		panel_37.add(calendar);		*/
+		
 		
 		JPanel panel_38 = new JPanel();
-		panel_38.setBounds(85, 557, 275, 82);
+		panel_38.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_38.setBounds(488, 119, 146, 28);
 		panel_2.add(panel_38);
 		
+		JLabel label_10 = new JLabel("\uC9C1            \uCC45");
+		panel_38.add(label_10);
+		
+		JPanel panel_39 = new JPanel();
+		panel_39.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_39.setBounds(646, 119, 255, 28);
+		panel_2.add(panel_39);
+		
+		JLabel lblPosition = new JLabel("position");
+		panel_39.add(lblPosition);
+		
+		JPanel panel_40 = new JPanel();
+		panel_40.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_40.setBounds(108, 542, 126, 28);
+		panel_2.add(panel_40);
+		
+		JLabel label_11 = new JLabel("\uCD08\uACFC\uADFC\uBB34\uC2DC\uAC04");
+		panel_40.add(label_11);
+		
+		JPanel panel_41 = new JPanel();
+		panel_41.setBounds(252, 542, 146, 28);
+		panel_2.add(panel_41);
+		panel_41.setLayout(null);
+		
+		textField = new JTextField();
+		textField.setBounds(0, 0, 146, 28);
+		panel_41.add(textField);
+		textField.setColumns(10);
+		
+		JPanel panel_42 = new JPanel();
+		panel_42.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_42.setBounds(495, 542, 126, 28);
+		panel_2.add(panel_42);
+		
+		JLabel label_12 = new JLabel("\uB204\uC801\uCD08\uACFC\uADFC\uBB34\uC2DC\uAC04");
+		panel_42.add(label_12);
+		
+		JPanel panel_43 = new JPanel();
+		panel_43.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_43.setBounds(638, 542, 146, 28);
+		panel_2.add(panel_43);
+		
+		JLabel lblN = new JLabel("n");
+		panel_43.add(lblN);
+		
+		JButton btnNewButton = new JButton("\uB4F1\uB85D");
+		btnNewButton.setBounds(409, 542, 57, 28);
+		panel_2.add(btnNewButton);
+		
+		JPanel panel_44 = new JPanel();
+		panel_44.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_44.setBounds(108, 580, 126, 28);
+		panel_2.add(panel_44);
+		
+		JLabel label_13 = new JLabel("\uCD08\uACFC\uADFC\uBB34\uC218\uB2F9");
+		panel_44.add(label_13);
+		
+		JPanel panel_45 = new JPanel();
+		panel_45.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_45.setBounds(495, 580, 126, 28);
+		panel_2.add(panel_45);
+		
+		JLabel label_14 = new JLabel("\uB204\uC801\uCD08\uACFC\uADFC\uBB34\uC218\uB2F9");
+		panel_45.add(label_14);
+		
+		JPanel panel_46 = new JPanel();
+		panel_46.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_46.setBounds(252, 580, 146, 28);
+		panel_2.add(panel_46);
+		
+		JLabel lblN_1 = new JLabel("n");
+		panel_46.add(lblN_1);
+		
+		JPanel panel_47 = new JPanel();
+		panel_47.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_47.setBounds(638, 580, 146, 28);
+		panel_2.add(panel_47);
+		
+		JLabel lblN_2 = new JLabel("n");
+		panel_47.add(lblN_2);
+		
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_3, null);
+		tabbedPane.addTab("\uC5F0\uBD09 \uAD00\uB9AC", null, panel_3, null);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
 		gl_panel_3.setHorizontalGroup(
 			gl_panel_3.createParallelGroup(Alignment.LEADING)
@@ -487,6 +614,9 @@ public class PmMain {
 				.addGap(0, 921, Short.MAX_VALUE)
 		);
 		panel_3.setLayout(gl_panel_3);
+		
+		JPanel panel_48 = new JPanel();
+		tabbedPane.addTab("New tab", null, panel_48, null);
 		panel.setLayout(gl_panel);
 		
 		JLabel lblNewLabel = new JLabel("New label");
@@ -494,4 +624,71 @@ public class PmMain {
 		panel_search.add(lblNewLabel);
 		frame.getContentPane().setLayout(groupLayout);
 	}
+	
+	
+	
+	 public void SwingCalendar() {
+		  
+		 
+		  JLabel label = new JLabel();
+		    label.setHorizontalAlignment(SwingConstants.CENTER);
+		 
+		    JButton b1 = new JButton("<-");
+		    b1.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent ae) {
+		        cal.add(Calendar.MONTH, -1);
+		        updateMonth();
+		      }
+		    });
+		 
+		    JButton b2 = new JButton("->");
+		    b2.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent ae) {
+		        cal.add(Calendar.MONTH, +1);
+		        updateMonth();
+		      }
+		    });
+		 
+		    JPanel panel = new JPanel();
+		    panel.setLayout(new BorderLayout());
+		    panel.add(b1,BorderLayout.WEST);
+		    panel.add(label,BorderLayout.CENTER);
+		    panel.add(b2,BorderLayout.EAST);
+		 
+		 
+		    String [] columns = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+		    model = new DefaultTableModel(null,columns);
+		    JTable table = new JTable(model);
+		    JScrollPane pane = new JScrollPane(table);
+		 
+		    panel_37.add(panel,BorderLayout.NORTH);
+		    panel_37.add(pane,BorderLayout.CENTER);
+		 
+		    this.updateMonth();
+		 
+		  }
+		 
+		  void updateMonth() {
+			 
+			 label = new JLabel();
+		    cal.set(Calendar.DAY_OF_MONTH, 1);
+		 
+		    String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
+		    int year = cal.get(Calendar.YEAR);
+		    label.setText(month + " " + year);
+		 
+		    int startDay = cal.get(Calendar.DAY_OF_WEEK);
+		    int numberOfDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		    int weeks = cal.getActualMaximum(Calendar.WEEK_OF_MONTH);
+		 
+		    model.setRowCount(0);
+		    model.setRowCount(weeks);
+		 
+		    int i = startDay-1;
+		    for(int day=1;day<=numberOfDays;day++){
+		      model.setValueAt(day, i/7 , i%7 );    
+		      i = i + 1;
+		    }
+		 
+		  }
 }
