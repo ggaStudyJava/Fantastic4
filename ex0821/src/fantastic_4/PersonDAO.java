@@ -145,8 +145,8 @@ public class PersonDAO {
 			rs = pstmt.executeQuery(); 
 			
 			while(rs.next()){
-				String name = rs.getString(2); //1번째 있는 column을 꺼냄
-				vo = new PersonVO(name);
+				String tempName = rs.getString(2); //1번째 있는 column을 꺼냄
+				vo = new PersonVO(tempName);
 			}	
 			
 		} catch (ClassNotFoundException e) {
@@ -167,7 +167,7 @@ public class PersonDAO {
 	}
 	
 	//부서별, 직책별, 이름순, 입사일순으로 정렬한다.
-	public PersonVO sortName(){
+	public ArrayList<PersonVO> sortName(){
 		PersonVO vo = null;
 		ArrayList<PersonVO> ar = new ArrayList<>();
 		try { 

@@ -17,25 +17,12 @@ public class PersonVO {
 	private int basePay;
 	private int overWorkTime;
 	private int serverancePay;
+
 	
-	public PersonVO(int idNum, String name, String birthDate, String address, String phoneNum, String division,
-			String position, String license, String accountNum, Date joinDate, Date quitDate, int basePay,
-			int overWorkTime, int serverancePay) {
+
+	public PersonVO(String name) {
 		super();
-		this.idNum = idNum;
 		this.name = name;
-		this.birthDate = birthDate;
-		this.address = address;
-		this.phoneNum = phoneNum;
-		this.division = division;
-		this.position = position;
-		this.license = license;
-		this.accountNum = accountNum;
-		this.joinDate = joinDate;
-		this.quitDate = quitDate;
-		this.basePay = basePay;
-		this.overWorkTime = overWorkTime;
-		this.serverancePay = serverancePay;
 	}
 
 	public int getIdNum() {
