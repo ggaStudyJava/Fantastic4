@@ -173,7 +173,7 @@ public class PmMain {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
 		tabbedPane.addTab("\uC0AC\uC6D0 \uC815\uBCF4", null, panel_1, null);
-		panel_1.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+		//panel_1.
 		panel_1.setLayout(null);
 		
 		JPanel pnl_photo = new JPanel();
