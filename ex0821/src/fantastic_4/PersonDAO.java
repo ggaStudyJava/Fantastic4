@@ -20,10 +20,9 @@ public class PersonDAO {
 	String id = "ga";
 	String pw = "1234";
 	
-	
 	//사원 추가
 	public int insertPerson(int IdNum,String name,String birthDate,String address,
-			String phoneNum,String division,String postion,String license,String accountNum,
+			String phoneNum,String division,String position,String license,String accountNum,
 			Date joinDate){
 		
 		int num = -1;
@@ -37,7 +36,7 @@ public class PersonDAO {
 			pstmt.setInt(1, IdNum); //물음표 위치 번호, 1번부터 시작
 			pstmt.setString(2, name);
 			pstmt.setString(3, division);
-			pstmt.setString(4, postion);
+			pstmt.setString(4, position);
 			pstmt.setDate(5, joinDate);
 			pstmt.setString(6, birthDate);
 			pstmt.setString(7, address);
@@ -64,6 +63,7 @@ public class PersonDAO {
 		return num;
 	}
 
+	//사원 삭제(바로 삭제 되게 설정함)
 	public int deletePerson(int IdNum){
 		int num = -1;
 		try { 
@@ -91,7 +91,8 @@ public class PersonDAO {
 		return num;
 	}
 	
-	public int updatePerson(int IdNum,String address,String division,String postion,
+	//사원 수정
+	public int updatePerson(int IdNum,String address,String division,String position,
 			String license,String accountNum,String phoneNum){
 		int num = -1;
 		try { 
@@ -105,7 +106,7 @@ public class PersonDAO {
 			pstmt.setString(1, address);
 			pstmt.setString(2, phoneNum);
 			pstmt.setString(3, division);
-			pstmt.setString(4, postion);
+			pstmt.setString(4, position);
 			pstmt.setString(5, license);
 			pstmt.setString(6, accountNum);
 			pstmt.setInt(7, IdNum); //해당 IdNum을 가진 사람 수정			
@@ -128,7 +129,7 @@ public class PersonDAO {
 		
 	}
 
-	//아직 PersonVO 안만들었음
+	//검색기능
 	public PersonVO searchPerson(int IdNum,String birthDate,String name){
 		PersonVO vo = null;
 		try { 
@@ -169,8 +170,8 @@ public class PersonDAO {
 		return vo;
 	}
 	
-	//부서별, 직책별, 이름순, 입사일순으로 정렬한다.
-	public ArrayList<PersonVO> sortName(){
+	//정렬 메소드
+	public ArrayList<PersonVO> sortName(){//이름 정렬
 		PersonVO vo = null;
 		ArrayList<PersonVO> aLName = new ArrayList<>();
 		try { 
@@ -209,7 +210,7 @@ public class PersonDAO {
 		try { 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url,id,pw); 
-			String sql1 = "select name from PInfo order by name";
+			String sql1 = "select name from PInfo order by division";
 			pstmt = conn.prepareStatement(sql1);
 		
 			rs = pstmt.executeQuery(); 
@@ -236,4 +237,71 @@ public class PersonDAO {
 		return aLDivision;
 		
 	}
+	public ArrayList<PersonVO> sortPosition(){//직책정렬
+		PersonVO vo = null;
+		ArrayList<PersonVO> aLPosition = new ArrayList<>();
+		try { 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url,id,pw); 
+			String sql1 = "select name from PInfo order by position";
+			pstmt = conn.prepareStatement(sql1);
+		
+			rs = pstmt.executeQuery(); 
+			
+			while(rs.next()){
+				String name = rs.getString(1); //
+				vo = new PersonVO(name);
+				aLPosition.add(vo);
+			}	
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace(); //오류를 콘솔창에 자세히 출력해줌
+		} catch (SQLException e) {  
+			e.printStackTrace();
+		} 		//finally는 try 에러와 상관없이 실행
+		finally{ //반드시 close 해야함, 닫을때는 나중에 열었던것부터 닫기
+				try {
+					if(pstmt !=null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}		
+		}		
+		return aLPosition;
+		
+	}
+	public ArrayList<PersonVO> sortJoinDate(){//입사일순 정렬
+		PersonVO vo = null;
+		ArrayList<PersonVO> aLJoinDate = new ArrayList<>();
+		try { 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url,id,pw); 
+			String sql1 = "select name from PInfo order by joinDate";
+			pstmt = conn.prepareStatement(sql1);
+		
+			rs = pstmt.executeQuery(); 
+			
+			while(rs.next()){
+				String name = rs.getString(1); //
+				vo = new PersonVO(name);
+				aLJoinDate.add(vo);
+			}	
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace(); //오류를 콘솔창에 자세히 출력해줌
+		} catch (SQLException e) {  
+			e.printStackTrace();
+		} 		//finally는 try 에러와 상관없이 실행
+		finally{ //반드시 close 해야함, 닫을때는 나중에 열었던것부터 닫기
+				try {
+					if(pstmt !=null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}		
+		}		
+		return aLJoinDate;
+		
+	}
+
 }
