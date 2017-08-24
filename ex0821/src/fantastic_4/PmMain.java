@@ -200,6 +200,7 @@ public class PmMain {
 		pnl_photo.setLayout(gl_pnl_photo);
 		
 		JPanel panel_8 = new JPanel();
+		panel_8.setBackground(Color.WHITE);
 		panel_8.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_8.setBounds(63, 81, 146, 28);
 		panel_1.add(panel_8);
