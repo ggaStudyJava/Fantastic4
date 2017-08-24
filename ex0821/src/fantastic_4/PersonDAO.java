@@ -20,6 +20,7 @@ public class PersonDAO {
 	String id = "ga";
 	String pw = "1234";
 	
+	
 	//사원 추가
 	public int insertPerson(int IdNum,String name,String birthDate,String address,
 			String phoneNum,String division,String postion,String license,String accountNum,
@@ -200,5 +201,4 @@ public class PersonDAO {
 		
 	}
 	
-	public PersonVO sortDi
 }
