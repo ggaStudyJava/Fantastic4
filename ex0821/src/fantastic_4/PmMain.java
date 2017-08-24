@@ -568,6 +568,10 @@ public class PmMain {
 		panel_43.add(lblN);
 		
 		JButton btnNewButton = new JButton("\uB4F1\uB85D");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton.setBounds(409, 542, 57, 28);
 		panel_2.add(btnNewButton);
 		
