@@ -62,7 +62,7 @@ public class PersonDAO {
 					e.printStackTrace();
 				}		
 		}
-		System.out.println("to_date('"+joinDate+"')");
+		
 		return num;
 	}
 
