@@ -481,6 +481,7 @@ public class PmMain {
 
 		JButton btn_newworker = new JButton("\uC2E0 \uADDC \uB4F1 \uB85D");// 신규등록
 		btn_newworker.addActionListener(new ActionListener() {
+<<<<<<< HEAD
 			public void actionPerformed(ActionEvent arg0) {
 				
 				if(!insert){
@@ -525,6 +526,9 @@ public class PmMain {
 				}
 				
 				
+=======
+			public void actionPerformed(ActionEvent arg0) {				
+>>>>>>> branch 'master' of https://github.com/jangchankyung/Team4.git
 			}
 		});
 		GroupLayout gl_panel_31 = new GroupLayout(panel_31);
