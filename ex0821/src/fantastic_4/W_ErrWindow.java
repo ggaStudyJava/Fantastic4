@@ -16,17 +16,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 public class W_ErrWindow {
-
-	private static int makemsg;
 	private JFrame frmError;
-	private String msg;
 
 	/**
 	 * Launch the application.
 	 */
 	
 	public static void main(String[] args) {
-		makemsg = args.length;
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -70,13 +66,7 @@ public class W_ErrWindow {
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, frmError.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 95, SpringLayout.WEST, frmError.getContentPane());
 		
-        if(makemsg==0){
-        	msg="아이디와 비밀번호를 확인하세요.";        	
-        }
-        if(makemsg==2){
-        	msg = "이름과 입사일 생일은 공백이 허용되지 않습니다.";
-        }
-		JLabel label = new JLabel(msg);
+		JLabel label = new JLabel("아이디와 비밀번호를 확인하세요.");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(label, "name_6260729542308");
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, -89, SpringLayout.EAST, frmError.getContentPane());

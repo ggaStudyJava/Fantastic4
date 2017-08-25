@@ -554,9 +554,9 @@ public class PmMain {
 				String tmpacc = cbb_banklist.getSelectedItem().toString();
 				tmpacc = tmpacc+txt_accounts.getText().toString();
 				if(tmpname==null||tmpjoindate==null||tmpbirth==null){
-					String[] hasempty = {"-1","-2"};
-					W_ErrWindow err = new W_ErrWindow();
-					err.main(hasempty);
+					
+					W_nullWindow nl = new W_nullWindow();
+					nl.main(null);
 				}
 				
 				
@@ -711,7 +711,7 @@ public class PmMain {
 			public void actionPerformed(ActionEvent arg0) {
 				int overworktime = Integer.parseInt(txt_OverWorkTime.getText().toString());
 				PaymentDAO dao = new PaymentDAO();
-				dao.manageoverworktime(selected, overworktime);
+				dao.accumulateOverWorkTime(Integer.parseInt(txt_idnum.getText().toString()), overworktime);
 				
 			}
 		});
