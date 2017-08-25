@@ -26,6 +26,7 @@ public class CreateTable {
 					+ "name varchar(20) not null," + "division varchar(20) not null," + "postion varchar(20) not null,"
 					+ "joinDate date not null," + "birthDate date not null," + "address varchar(50),"
 					+ "phoneNum varchar(20)," + "license varchar(20)," + "accountNum varchar(20));";
+		
 			String createpayment = "create table payment " + "(idnum number not null primary key,"
 					+ "basepay number not null," + "overworktime number," + "serverancepay number);";
 			psmt.execute(createPInfo);

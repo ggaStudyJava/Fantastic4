@@ -5,46 +5,72 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class PaymentDAO {
-	PreparedStatement psmt;
-	Connection conn;
-	ResultSet rs;
-	
+	private PreparedStatement pstmt;
+	private PreparedStatement pstmt2;
+	private Connection conn;
+	private ResultSet rs;
+
 	private String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";// DB URL
 	private String user = "ck";
 	private String password = "123456";
-	
-	ArrayList<PaymentVO> volist = new ArrayList<>();
-	
-	public ArrayList<PaymentVO> manageoverworktime(String selected, int hour) {
-		int tmpoverworkhour;
-		
+	public final int OvWorkPay = 30000; //초과근무수당
+
+
+	// 누적초과시간 만든이: 국경아
+	//초과근무시간 메소드는 굳이 안만들어도 누적초과시간 메소드에서 해결됨
+	public int accumulateOverWorkTime(int IdNum, int OverWorkTime) {
+		int num = -1;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url,user,password);
-			String sql = "select OVERWORKTIME from PAYMENT where NAME = '"+selected+"';";
-			psmt = conn.prepareStatement(sql);
+			// 해당 드라이버를 메모리에 업로드
+			conn = DriverManager.getConnection(url, user, password);
+			
+			String sql1 = "select overworktime from payment where IdNum = ?";
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setInt(1, IdNum);
 
-			rs = psmt.executeQuery();
+			num = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
 			
-			while(rs.next()){
-				tmpoverworkhour = rs.getInt(3);
-				PaymentVO vo = new PaymentVO();
-				volist.add(vo);
-			}
 			
+			if(rs.next()){ //dayOverWorkTime을 DB에 있던 OverWorkTime와 합산
+				OverWorkTime += rs.getInt(1); 				
+			}			
+			
+			String sql2 = "update payment set OverWorkTime = ? where IdNum = ?";
+			pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, OverWorkTime);
+			pstmt2.setInt(2, IdNum);
+			
+			num = pstmt2.executeUpdate();
+			rs = pstmt2.executeQuery();			
+			
+
+		} catch (ClassNotFoundException e) {// try에서 에러가 발생할 경우 catch실행
+			e.printStackTrace(); // 오류를 콘솔창에 자세히 출력해줌
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} finally {
+			try {if (pstmt2 != null)
+				pstmt2.close();				
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		return null;
+		return OverWorkTime;
+	}
+
+	//초과근무수당 메소드
+	public int overWorkPay(int OverWorkTime){ 		
+		return OvWorkPay*OverWorkTime;
 		
 	}
-	
-
 }
