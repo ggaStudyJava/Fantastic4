@@ -711,7 +711,8 @@ public class PmMain {
 			public void actionPerformed(ActionEvent arg0) {
 				int overworktime = Integer.parseInt(txt_OverWorkTime.getText().toString());
 				PaymentDAO dao = new PaymentDAO();
-				dao.accumulateOverWorkTime(Integer.parseInt(txt_idnum.getText().toString()), overworktime);
+				PersonDAO Pdao = new PersonDAO();
+				dao.accumulateOverWorkTime(Pdao.getPersonIdNum(selected)/*동명이인 처리 불가*/, overworktime);
 				
 			}
 		});
