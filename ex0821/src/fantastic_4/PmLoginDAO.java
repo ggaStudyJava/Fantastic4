@@ -10,8 +10,7 @@ public class PmLoginDAO {
 	public PmLoginDAO(String id, String pw) {
 		super();
 		this.id = id;
-		this.pw = pw;
-		
+		this.pw = pw;		
 	}
 
 	public String getId() {

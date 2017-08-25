@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -59,6 +60,12 @@ public class PmLogin {
 		if (txtfieldId.getText().equals(pmLogin.getId())
 				&& new String(passwordField.getPassword()).equals(pmLogin.getPw())) {
 			System.out.println("로그인성공");
+//			try {
+//				CreateTable ct = new CreateTable();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			frame.dispose();
 			PmMain pmMain = new PmMain();
 			pmMain.main(null); // 메인창 호출
