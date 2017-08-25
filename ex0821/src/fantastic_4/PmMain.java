@@ -1,5 +1,6 @@
 package fantastic_4;
 
+//수정되지 않은 문제는 ****으로 찾으면 됨
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -9,11 +10,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -32,6 +36,11 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+
+import javax.swing.ListSelectionModel;
+import javax.swing.AbstractListModel;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 import com.toedter.calendar.JDayChooser;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JMonthChooser;
@@ -50,7 +59,11 @@ public class PmMain {
 	private JTextField cbb_accounts;
 	private JTextField txt_license;
 	private JTable table;
-	private JTextField tF_OverWorkTime;
+	private JTextField txt_OverWorkTime;
+	private JList list_name;
+	String selected;
+
+	PersonDAO person = new PersonDAO();
 
 	DefaultTableModel model;
 	Calendar cal = new GregorianCalendar();
@@ -85,10 +98,10 @@ public class PmMain {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		
-		//frame.setBounds(100, 100, 1280, 1024);
 
-		frame.setBounds(300, 0, 1280,1024);
+		// frame.setBounds(100, 100, 1280, 1024);
+
+		frame.setBounds(300, 0, 1280, 1024);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -150,18 +163,96 @@ public class PmMain {
 			public void itemStateChanged(ItemEvent e) {
 
 				// System.out.println(e.getStateChange());
+				//****리스트가 갱신되지 않음
 				System.out.println(e.getItem());
+				DefaultListModel<String> sortby = new DefaultListModel<>();
+				
+				ArrayList<PersonVO> sortbyp;
+				if (e.getItem() == "이름별 정렬") {
+					sortbyp = person.sortName();
+
+					for (PersonVO personvo : sortbyp) {
+						sortby.addElement(personvo.getName());
+					}
+					
+					list_name = new JList(sortby);
+					list_name.updateUI();
+
+				}
+				if (e.getItem() == "부서별정렬") {
+					sortbyp = person.sortDivision();
+
+					for (PersonVO personvo : sortbyp) {
+						sortby.addElement(personvo.getName());
+					}
+					
+					list_name = new JList(sortby);
+					list_name.updateUI();
+					
+
+				}
+				if (e.getItem() == "직책별 정렬") {
+					sortbyp = person.sortPosition();
+
+					for (PersonVO personvo : sortbyp) {
+						sortby.addElement(personvo.getName());
+					}
+					
+					list_name = new JList(sortby);
+					list_name.updateUI();
+
+				}
+				if(e.getItem()=="입사일순 정렬"){
+					sortbyp = person.sortJoinDate();
+
+					for (PersonVO personvo : sortbyp) {
+						sortby.addElement(personvo.getName());
+					}
+					list_name = new JList(sortby);
+					list_name.updateUI();
+
+					
+				}
+
 			}
 		});
-		cbb_sorts.setModel(new DefaultComboBoxModel(new String[] { "\uC774\uB984\uBCC4 \uC815\uB82C",
-				"\uBD80\uC11C\uBCC4 \uC815\uB82C", "\uC9C1\uCC45\uC21C \uC815\uB82C" }));
+		cbb_sorts.setModel(new DefaultComboBoxModel(new String[] {"\uC774\uB984\uBCC4 \uC815\uB82C", "\uBD80\uC11C\uBCC4 \uC815\uB82C", "\uC9C1\uCC45\uC21C \uC815\uB82C", "\uC785\uC0AC\uC77C\uC21C \uC815\uB82C"}));
 		cbb_sorts.setBounds(10, 44, 262, 34);
 		panel_6.add(cbb_sorts);
 		panel_6.add(cbb_sorts, "name_10358438746288");
 
-		JList list_name = new JList();
-		list_name.setBounds(0, 89, 284, 814);
+		DefaultListModel<String> sortbyname = new DefaultListModel<>();
+		PersonDAO person = new PersonDAO();
+		ArrayList<PersonVO> sortbynamep = person.sortName();
+
+		for (PersonVO personvo : sortbynamep) {
+			sortbyname.addElement(personvo.getName());
+		}
+		list_name = new JList(sortbyname);
+		list_name.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				selected = list_name.getSelectedValue().toString();
+				ArrayList<PersonVO> showperson = person.getpersoninfo(selected);
+				
+				txt_idnum.setText(showperson.get(0).getIdNum()+"");
+				
+				txt_name.setText(showperson.get(0).getName());
+				
+				txt_birth.setText(showperson.get(0).getBirthDate()+"");
+				txt_joindate.setText(showperson.get(0).getJoinDate()+"");
+				txt_address.setText(showperson.get(0).getAddress());
+				txt_phoneNum.setText(showperson.get(0).getPhoneNum());
+				txt_license.setText(showperson.get(0).getLicense());
+				
+			}
+		});
+
+		list_name.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list_name.setToolTipText("");
+		list_name.setBounds(0, 89, 284, 593);
 		panel_list.add(list_name);
+		
+		
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -356,11 +447,11 @@ public class PmMain {
 		panel_27.setBounds(221, 452, 663, 252);
 		panel_1.add(panel_27);
 		panel_27.setLayout(null);
-				
-						txt_license = new JTextField();
-						txt_license.setBounds(0, 0, 663, 252);
-						panel_27.add(txt_license);
-						txt_license.setColumns(10);
+
+		txt_license = new JTextField();
+		txt_license.setBounds(0, 0, 663, 252);
+		panel_27.add(txt_license);
+		txt_license.setColumns(10);
 
 		JPanel panel_29 = new JPanel();
 		panel_29.setBounds(221, 342, 284, 28);
@@ -489,7 +580,7 @@ public class PmMain {
 
 		panel_2.add(panel_37);
 		panel_37.setLayout(null);
-		
+
 		JCalendar calendar = new JCalendar();
 		calendar.setBounds(0, 0, 838, 358);
 		panel_37.add(calendar);
@@ -498,9 +589,9 @@ public class PmMain {
 		 * table = new JTable(); table.setBounds(0, 0, 838, 358);
 		 */
 
-		/*
-		 * SwingCalendar calendar = new SwingCalendar(); panel_37.add(calendar);
-		 */
+		
+		 //SwingCalendar calendar = new SwingCalendar(); panel_37.add(calendar);
+		 
 
 		JPanel panel_38 = new JPanel();
 		panel_38.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -531,10 +622,10 @@ public class PmMain {
 		panel_2.add(panel_41);
 		panel_41.setLayout(null);
 
-		tF_OverWorkTime = new JTextField();
-		tF_OverWorkTime.setBounds(0, 0, 146, 28);
-		panel_41.add(tF_OverWorkTime);
-		tF_OverWorkTime.setColumns(10);
+		txt_OverWorkTime = new JTextField();
+		txt_OverWorkTime.setBounds(0, 0, 146, 28);
+		panel_41.add(txt_OverWorkTime);
+		txt_OverWorkTime.setColumns(10);
 
 		JPanel panel_42 = new JPanel();
 		panel_42.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -549,10 +640,18 @@ public class PmMain {
 		panel_43.setBounds(638, 542, 146, 28);
 		panel_2.add(panel_43);
 
-		JLabel lblN = new JLabel("n");
-		panel_43.add(lblN);
+		JLabel lbl_sumoverworktime = new JLabel("n");
+		panel_43.add(lbl_sumoverworktime);
 
 		JButton btnNewButton = new JButton("\uB4F1\uB85D");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int overworktime = Integer.parseInt(txt_OverWorkTime.getText().toString());
+				PaymentDAO dao = new PaymentDAO();
+				dao.manageoverworktime(selected, overworktime);
+				
+			}
+		});
 
 		btnNewButton.setBounds(409, 542, 67, 28);
 
@@ -579,16 +678,16 @@ public class PmMain {
 		panel_46.setBounds(252, 580, 146, 28);
 		panel_2.add(panel_46);
 
-		JLabel lblN_1 = new JLabel("n");
-		panel_46.add(lblN_1);
+		JLabel lbl_overworkpay = new JLabel("n");
+		panel_46.add(lbl_overworkpay);
 
 		JPanel panel_47 = new JPanel();
 		panel_47.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_47.setBounds(638, 580, 146, 28);
 		panel_2.add(panel_47);
 
-		JLabel lblN_2 = new JLabel("n");
-		panel_47.add(lblN_2);
+		JLabel lbl_sumoverworkpay = new JLabel("n");
+		panel_47.add(lbl_sumoverworkpay);
 
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("\uC5F0\uBD09 \uAD00\uB9AC", null, panel_3, null);
@@ -668,6 +767,10 @@ public class PmMain {
 			model.setValueAt(day, i / 7, i % 7);
 			i = i + 1;
 		}
+
+	}
+
+	private void setTxt() {
 
 	}
 }

@@ -5,14 +5,15 @@ import java.sql.Date;
 public class PersonVO {
 	private int idNum;
 	private String name;
-	private String birthDate;
-	private String address;
-	private String phoneNum;
 	private String division;
 	private String position;
-	private String license;
-	private String accountNum;
 	private Date joinDate;
+	private Date birthDate;
+	private String address;
+	private String phoneNum;
+	private String license;
+	
+	private String accountNum;
 	private Date quitDate;
 	private int basePay;
 	private int overWorkTime;
@@ -25,6 +26,21 @@ public class PersonVO {
 		this.name = name;
 	}
 
+	public PersonVO(int idNum, String name, String division, String position, Date joinDate, Date birthDate,
+			String address, String phoneNum, String license, String accountNum) {
+		super();
+		this.idNum = idNum;
+		this.name = name;
+		this.division = division;
+		this.position = position;
+		this.joinDate = joinDate;
+		this.birthDate = birthDate;
+		this.address = address;
+		this.phoneNum = phoneNum;
+		this.license = license;
+		this.accountNum = accountNum;
+	}
+
 	public int getIdNum() {
 		return idNum;
 	}
@@ -34,6 +50,7 @@ public class PersonVO {
 	}
 
 	public String getName() {
+		System.out.println(name);
 		return name;
 	}
 
@@ -41,11 +58,11 @@ public class PersonVO {
 		this.name = name;
 	}
 
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(String birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 

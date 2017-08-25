@@ -15,10 +15,13 @@ public class PersonDAO {
 	private  Statement stmt;
 	private  PreparedStatement pstmt;
 	private ResultSet rs;
+	//`PmMain main = new PmMain();
 	
 	String url = "jdbc:oracle:thin:@127.0.01:1521:XE";
-	String id = "ga";
-	String pw = "1234";
+//	String id = "ga";
+//	String pw = "1234";
+	String id = "ck";
+	String pw = "123456";
 	
 	//사원 추가
 	public int insertPerson(int IdNum,String name,String birthDate,String address,
@@ -303,5 +306,58 @@ public class PersonDAO {
 		return aLJoinDate;
 		
 	}
+
+	public ArrayList<PersonVO> getpersoninfo(String selected) {
+		PersonVO vo = null;
+		ArrayList<PersonVO> getpersoninfo = new ArrayList<>();
+		try { 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url,id,pw); 
+			String sql1 = "select * from PINFO where NAME = '"+selected+"'";
+			System.out.println(sql1);
+			
+			pstmt = conn.prepareStatement(sql1);//****이거 오류생김
+		
+			rs = pstmt.executeQuery(); 
+			
+			while(rs.next()){
+				int idnum = rs.getInt(1);
+				System.out.println(idnum);
+				String name = rs.getString(2);
+				System.out.println(name);
+				String div = rs.getString(3);
+				String pos = rs.getString(4);
+				Date join = rs.getDate(5);
+				System.out.println(join);
+				Date birth = rs.getDate(6);
+				String add = rs.getString(7);
+				String phone = rs.getString(8);
+				String lic = rs.getString(9);
+				String acc = rs.getString(10);
+				System.out.println(acc);
+				
+				vo = new PersonVO(idnum,name,div,pos,join,birth,add,phone,lic,acc);
+				getpersoninfo.add(vo);
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace(); //오류를 콘솔창에 자세히 출력해줌
+		} catch (SQLException e) {  
+			e.printStackTrace();
+		} 		//finally는 try 에러와 상관없이 실행
+		finally{ //반드시 close 해야함, 닫을때는 나중에 열었던것부터 닫기
+				try {
+					if(pstmt !=null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}		
+		}		
+		return getpersoninfo;
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 
 }
