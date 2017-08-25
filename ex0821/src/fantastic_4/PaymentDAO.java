@@ -24,7 +24,7 @@ public class PaymentDAO {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url,user,password);
-			String sql = "select OVERWORKTIME from PAYMENT where NAME = '"+selected+"';";
+			String sql = "select OVERWORKTIME from PAYMENT where NAME = '"+selected+"'";
 			psmt = conn.prepareStatement(sql);
 
 			rs = psmt.executeQuery();

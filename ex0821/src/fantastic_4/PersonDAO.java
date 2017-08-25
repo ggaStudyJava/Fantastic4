@@ -321,21 +321,17 @@ public class PersonDAO {
 			rs = pstmt.executeQuery(); 
 			
 			while(rs.next()){
-				int idnum = rs.getInt(1);
-				System.out.println(idnum);
-				String name = rs.getString(2);
-				System.out.println(name);
+				int idnum = rs.getInt(1);				
+				String name = rs.getString(2);				
 				String div = rs.getString(3);
 				String pos = rs.getString(4);
-				Date join = rs.getDate(5);
-				System.out.println(join);
+				Date join = rs.getDate(5);				
 				Date birth = rs.getDate(6);
 				String add = rs.getString(7);
 				String phone = rs.getString(8);
 				String lic = rs.getString(9);
 				String acc = rs.getString(10);
-				System.out.println(acc);
-				
+						
 				vo = new PersonVO(idnum,name,div,pos,join,birth,add,phone,lic,acc);
 				getpersoninfo.add(vo);
 			}
