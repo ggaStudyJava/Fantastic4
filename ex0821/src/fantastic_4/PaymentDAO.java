@@ -33,6 +33,7 @@ public class PaymentDAO {
 			pstmt = conn.prepareStatement(sql1);
 			pstmt.setInt(1, IdNum);
 
+
 			num = pstmt.executeUpdate();
 			rs = pstmt.executeQuery();
 			

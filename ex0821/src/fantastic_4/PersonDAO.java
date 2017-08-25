@@ -366,28 +366,28 @@ public class PersonDAO {
 			conn = DriverManager.getConnection(url, id, pw);
 			String sql1 = "select * from PINFO where NAME = '" + selected + "'";
 			System.out.println(sql1);
+			
+			pstmt = conn.prepareStatement(sql1);//****이거 오류생김
+		
+			rs = pstmt.executeQuery(); 
+			
+			while(rs.next()){
+				int idnum = rs.getInt(1);				
+				String name = rs.getString(2);				
 
-			pstmt = conn.prepareStatement(sql1);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				int idnum = rs.getInt(1);
-				System.out.println(idnum);
-				String name = rs.getString(2);
-				System.out.println(name);
 				String div = rs.getString(3);
 				String pos = rs.getString(4);
-				Date join = rs.getDate(5);
-				System.out.println(join);
+				Date join = rs.getDate(5);				
 				Date birth = rs.getDate(6);
 				String add = rs.getString(7);
 				String phone = rs.getString(8);
 				String lic = rs.getString(9);
 				String acc = rs.getString(10);
+
 				System.out.println(acc);
 
 				vo = new PersonVO(idnum, name, div, pos, join, birth, add, phone, lic, acc);
+
 				getpersoninfo.add(vo);
 			}
 

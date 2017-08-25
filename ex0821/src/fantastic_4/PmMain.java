@@ -69,6 +69,7 @@ public class PmMain {
 	Calendar cal = new GregorianCalendar();
 	JLabel label;
 	JPanel panel_37;
+	private DefaultListModel sortbyname;
 
 	/**
 	 * Launch the application.
@@ -165,29 +166,28 @@ public class PmMain {
 				// System.out.println(e.getStateChange());
 				//****리스트가 갱신되지 않음
 				System.out.println(e.getItem());
-				DefaultListModel<String> sortby = new DefaultListModel<>();
+				
 				
 				ArrayList<PersonVO> sortbyp;
 				if (e.getItem() == "이름별 정렬") {
+					sortbyname.clear();
 					sortbyp = person.sortName();
 
 					for (PersonVO personvo : sortbyp) {
-						sortby.addElement(personvo.getName());
+						sortbyname.addElement(personvo.getName());
 					}
 					
-					list_name = new JList(sortby);
-					list_name.updateUI();
+					
 
 				}
 				if (e.getItem() == "부서별정렬") {
+					sortbyname.clear();
 					sortbyp = person.sortDivision();
 
 					for (PersonVO personvo : sortbyp) {
-						sortby.addElement(personvo.getName());
+						sortbyname.addElement(personvo.getName());
 					}
 					
-					list_name = new JList(sortby);
-					list_name.updateUI();
 					
 
 				}
@@ -195,21 +195,21 @@ public class PmMain {
 					sortbyp = person.sortPosition();
 
 					for (PersonVO personvo : sortbyp) {
-						sortby.addElement(personvo.getName());
+						sortbyname.addElement(personvo.getName());
 					}
 					
-					list_name = new JList(sortby);
+					list_name = new JList(sortbyname);
 					list_name.updateUI();
 
 				}
 				if(e.getItem()=="입사일순 정렬"){
+					sortbyname.clear();
 					sortbyp = person.sortJoinDate();
 
 					for (PersonVO personvo : sortbyp) {
-						sortby.addElement(personvo.getName());
+						sortbyname.addElement(personvo.getName());
 					}
-					list_name = new JList(sortby);
-					list_name.updateUI();
+					
 
 					
 				}
@@ -221,7 +221,7 @@ public class PmMain {
 		panel_6.add(cbb_sorts);
 		panel_6.add(cbb_sorts, "name_10358438746288");
 
-		DefaultListModel<String> sortbyname = new DefaultListModel<>();
+		sortbyname = new DefaultListModel<>();
 		PersonDAO person = new PersonDAO();
 		ArrayList<PersonVO> sortbynamep = person.sortName();
 
