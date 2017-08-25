@@ -15,7 +15,6 @@ public class PersonDAO {
 	private  Statement stmt;
 	private  PreparedStatement pstmt;
 	private ResultSet rs;
-	//`PmMain main = new PmMain();
 	
 	String url = "jdbc:oracle:thin:@127.0.01:1521:XE";
 //	String id = "ga";
@@ -26,7 +25,7 @@ public class PersonDAO {
 	//사원 추가
 	public int insertPerson(int IdNum,String name,String birthDate,String address,
 			String phoneNum,String division,String position,String license,String accountNum,
-			Date joinDate){
+			String joinDate){
 		
 		int num = -1;
 		try { 
@@ -40,7 +39,7 @@ public class PersonDAO {
 			pstmt.setString(2, name);
 			pstmt.setString(3, division);
 			pstmt.setString(4, position);
-			pstmt.setDate(5, joinDate);
+			pstmt.setString(5, joinDate);
 			pstmt.setString(6, birthDate);
 			pstmt.setString(7, address);
 			pstmt.setString(8, phoneNum);
@@ -63,6 +62,7 @@ public class PersonDAO {
 					e.printStackTrace();
 				}		
 		}
+		System.out.println("to_date('"+joinDate+"')");
 		return num;
 	}
 

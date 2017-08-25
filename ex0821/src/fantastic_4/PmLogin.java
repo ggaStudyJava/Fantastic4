@@ -70,7 +70,7 @@ public class PmLogin {
 			PmMain pmMain = new PmMain();
 			pmMain.main(null); // 메인창 호출
 		} else {
-			ErrWindow err = new ErrWindow();
+			W_ErrWindow err = new W_ErrWindow();
 			System.out.println("로그인실패");
 			err.main(null);			
 			txtfieldId.setText("");

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.security.GeneralSecurityException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -56,11 +57,12 @@ public class PmMain {
 	private JTextField txt_joindate;
 	private JTextField txt_phoneNum;
 	private JTextField txt_address;
-	private JTextField cbb_accounts;
+	private JTextField txt_accounts;
 	private JTextField txt_license;
 	private JTable table;
 	private JTextField txt_OverWorkTime;
 	private JList list_name;
+	boolean insert;
 	String selected;
 
 	PersonDAO person = new PersonDAO();
@@ -99,6 +101,7 @@ public class PmMain {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
 
 		// frame.setBounds(100, 100, 1280, 1024);
 
@@ -107,10 +110,13 @@ public class PmMain {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panel_search = new JPanel();
+		panel_search.setBackground(Color.WHITE);
 
 		JPanel panel_list = new JPanel();
+		panel_list.setBackground(Color.WHITE);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
 				.createSequentialGroup().addContainerGap()
@@ -163,10 +169,7 @@ public class PmMain {
 		cbb_sorts.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 
-				// System.out.println(e.getStateChange());
-				//****리스트가 갱신되지 않음
-				System.out.println(e.getItem());
-				
+				// System.out.println(e.getStateChange());				
 				
 				ArrayList<PersonVO> sortbyp;
 				if (e.getItem() == "이름별 정렬") {
@@ -176,9 +179,6 @@ public class PmMain {
 					for (PersonVO personvo : sortbyp) {
 						sortbyname.addElement(personvo.getName());
 					}
-					
-					
-
 				}
 				if (e.getItem() == "부서별정렬") {
 					sortbyname.clear();
@@ -187,20 +187,13 @@ public class PmMain {
 					for (PersonVO personvo : sortbyp) {
 						sortbyname.addElement(personvo.getName());
 					}
-					
-					
-
 				}
 				if (e.getItem() == "직책별 정렬") {
+					sortbyname.clear();
 					sortbyp = person.sortPosition();
-
 					for (PersonVO personvo : sortbyp) {
 						sortbyname.addElement(personvo.getName());
 					}
-					
-					list_name = new JList(sortbyname);
-					list_name.updateUI();
-
 				}
 				if(e.getItem()=="입사일순 정렬"){
 					sortbyname.clear();
@@ -209,9 +202,6 @@ public class PmMain {
 					for (PersonVO personvo : sortbyp) {
 						sortbyname.addElement(personvo.getName());
 					}
-					
-
-					
 				}
 
 			}
@@ -255,6 +245,7 @@ public class PmMain {
 		
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.WHITE);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(gl_panel.createParallelGroup(Alignment.TRAILING).addComponent(tabbedPane,
 				Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 949, Short.MAX_VALUE));
@@ -301,6 +292,7 @@ public class PmMain {
 		txt_name.setColumns(10);
 
 		JPanel panel_10 = new JPanel();
+		panel_10.setBackground(Color.WHITE);
 		panel_10.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_10.setBounds(63, 119, 146, 28);
 		panel_1.add(panel_10);
@@ -318,6 +310,7 @@ public class PmMain {
 		txt_idnum.setColumns(10);
 
 		JPanel panel_12 = new JPanel();
+		panel_12.setBackground(Color.WHITE);
 		panel_12.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_12.setBounds(63, 157, 146, 28);
 		panel_1.add(panel_12);
@@ -337,6 +330,7 @@ public class PmMain {
 		txt_birth.setColumns(10);
 
 		JPanel panel_14 = new JPanel();
+		panel_14.setBackground(Color.WHITE);
 		panel_14.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_14.setBounds(63, 195, 146, 28);
 		panel_1.add(panel_14);
@@ -355,6 +349,7 @@ public class PmMain {
 		txt_joindate.setColumns(10);
 
 		JPanel panel_16 = new JPanel();
+		panel_16.setBackground(Color.WHITE);
 		panel_16.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_16.setBounds(63, 233, 146, 28);
 		panel_1.add(panel_16);
@@ -373,6 +368,7 @@ public class PmMain {
 		txt_phoneNum.setColumns(10);
 
 		JPanel panel_18 = new JPanel();
+		panel_18.setBackground(Color.WHITE);
 		panel_18.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_18.setBounds(63, 271, 146, 28);
 		panel_1.add(panel_18);
@@ -391,6 +387,7 @@ public class PmMain {
 		txt_address.setColumns(10);
 
 		JPanel panel_21 = new JPanel();
+		panel_21.setBackground(Color.WHITE);
 		panel_21.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_21.setBounds(63, 342, 146, 28);
 		panel_1.add(panel_21);
@@ -399,6 +396,7 @@ public class PmMain {
 		panel_21.add(label_4);
 
 		JPanel panel_22 = new JPanel();
+		panel_22.setBackground(Color.WHITE);
 		panel_22.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_22.setBounds(63, 380, 146, 28);
 		panel_1.add(panel_22);
@@ -407,6 +405,7 @@ public class PmMain {
 		panel_22.add(lblNewLabel_4);
 
 		JPanel panel_23 = new JPanel();
+		panel_23.setBackground(Color.WHITE);
 		panel_23.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_23.setBounds(63, 414, 146, 28);
 		panel_1.add(panel_23);
@@ -419,10 +418,10 @@ public class PmMain {
 		panel_1.add(panel_24);
 		panel_24.setLayout(null);
 
-		cbb_accounts = new JTextField();
-		cbb_accounts.setBounds(0, 0, 439, 28);
-		panel_24.add(cbb_accounts);
-		cbb_accounts.setColumns(10);
+		txt_accounts = new JTextField();
+		txt_accounts.setBounds(0, 0, 439, 28);
+		panel_24.add(txt_accounts);
+		txt_accounts.setColumns(10);
 
 		JPanel panel_25 = new JPanel();
 		panel_25.setBounds(221, 414, 204, 29);
@@ -436,6 +435,7 @@ public class PmMain {
 		panel_25.add(cbb_banklist);
 
 		JPanel panel_26 = new JPanel();
+		panel_26.setBackground(Color.WHITE);
 		panel_26.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_26.setBounds(63, 452, 146, 29);
 		panel_1.add(panel_26);
@@ -482,6 +482,49 @@ public class PmMain {
 		JButton btn_newworker = new JButton("\uC2E0 \uADDC \uB4F1 \uB85D");// 신규등록
 		btn_newworker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(!insert){
+				txt_address.setText("");
+				txt_birth.setText("");
+				txt_idnum.setText("");
+				txt_joindate.setText("");
+				txt_license.setText("");
+				txt_name.setText("");
+				txt_phoneNum.setText("");
+				insert = true;
+				btn_newworker.setText("신규등록 확인");
+				}
+				else{
+					if(txt_name!=null&&txt_birth!=null&&txt_joindate!=null){
+					String tmpaddress = txt_address.getText().toString();
+					String tmpbirth = txt_birth.getText().toString();
+					int tmpidnum = Integer.parseInt(txt_idnum.getText().toString());
+					String tmpjoindate = txt_birth.getText().toString();
+					String tmplicense = txt_license.getText().toString();
+					String tmpname = txt_name.getText().toString();
+					String tmpphone = txt_phoneNum.getText().toString();
+					String tmpdiv = cbb_division. getSelectedItem().toString();
+					String tmppos = cbb_position.getSelectedItem().toString();	
+					String tmpacc = cbb_banklist.getSelectedItem().toString();
+					tmpacc = tmpacc+txt_accounts.getText().toString();
+					System.out.println(tmpaddress+tmpbirth+tmpidnum+tmpjoindate+tmplicense+tmpname+tmpphone+tmpdiv+tmppos+tmpacc);
+					person.insertPerson(tmpidnum, tmpname, tmpbirth, tmpaddress, tmpphone, tmpdiv, tmppos, tmplicense, tmpacc, tmpjoindate);
+					insert = false;
+					W_popupWindow pop = new W_popupWindow();
+					pop.main(null);
+					btn_newworker.setText("신 규 등 록");
+					sortbyname.clear();
+					ArrayList<PersonVO> sortbyp;
+					sortbyp = person.sortName();
+
+					for (PersonVO personvo : sortbyp) {
+						sortbyname.addElement(personvo.getName());
+					}
+					
+					}
+				}
+				
+				
 			}
 		});
 		GroupLayout gl_panel_31 = new GroupLayout(panel_31);
@@ -498,6 +541,25 @@ public class PmMain {
 		JButton btn_update = new JButton("\uC218        \uC815");// 수정
 		btn_update.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String tmpaddress = txt_address.getText().toString();
+				String tmpbirth = txt_birth.getText().toString();
+				int tmpidnum = Integer.parseInt(txt_idnum.getText().toString());
+				String tmpjoindate = txt_birth.getText().toString();
+				String tmplicense = txt_license.getText().toString();
+				String tmpname = txt_name.getText().toString();
+				String tmpphone = txt_phoneNum.getText().toString();
+				String tmpdiv = cbb_division. getSelectedItem().toString();
+				String tmppos = cbb_position.getSelectedItem().toString();	
+				String tmpacc = cbb_banklist.getSelectedItem().toString();
+				tmpacc = tmpacc+txt_accounts.getText().toString();
+				if(tmpname==null||tmpjoindate==null||tmpbirth==null){
+					String[] hasempty = {"-1","-2"};
+					W_ErrWindow err = new W_ErrWindow();
+					err.main(hasempty);
+				}
+				
+				
 			}
 		});
 		GroupLayout gl_panel_32 = new GroupLayout(panel_32);
@@ -524,6 +586,7 @@ public class PmMain {
 		panel_33.setLayout(gl_panel_33);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		tabbedPane.addTab("\uADFC\uBB34 \uAD00\uB9AC", null, panel_2, null);
 		panel_2.setLayout(null);
 

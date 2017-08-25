@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
-public class ErrWindow {
+public class W_nullWindow {
 
 	private JFrame frmError;
 
@@ -26,7 +26,7 @@ public class ErrWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ErrWindow window = new ErrWindow();
+					W_nullWindow window = new W_nullWindow();
 					window.frmError.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class ErrWindow {
 	/**
 	 * Create the application.
 	 */
-	public ErrWindow() {
+	public W_nullWindow() {
 		initialize();
 	}
 
@@ -66,7 +66,7 @@ public class ErrWindow {
 		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, frmError.getContentPane());
 		springLayout.putConstraint(SpringLayout.WEST, panel_1, 95, SpringLayout.WEST, frmError.getContentPane());
 		
-		JLabel label = new JLabel("아이디와 비밀번호를 확인하세요.");
+		JLabel label = new JLabel("이름,생일,입사일은 공백값이 허용되지 않습니다.");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(label, "name_6260729542308");
 		springLayout.putConstraint(SpringLayout.EAST, panel_1, -89, SpringLayout.EAST, frmError.getContentPane());
