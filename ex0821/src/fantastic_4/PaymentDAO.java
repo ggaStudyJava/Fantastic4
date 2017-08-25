@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 public class PaymentDAO {
 	private PreparedStatement pstmt;
@@ -69,7 +67,7 @@ public class PaymentDAO {
 		return OverWorkTime;
 	}
 
-	//초과근무수당 메소드
+	//초과근무수당 메소드 만든이: 국경아
 	public int overWorkPay(int OverWorkTime){ 		
 		return OvWorkPay*OverWorkTime;
 		

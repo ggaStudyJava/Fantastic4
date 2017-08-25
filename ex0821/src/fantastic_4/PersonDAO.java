@@ -22,7 +22,7 @@ public class PersonDAO {
 	String id = "ck";
 	String pw = "123456";
 	
-	//사원 추가
+	// 사원 추가
 	public int insertPerson(int IdNum,String name,String birthDate,String address,
 			String phoneNum,String division,String position,String license,String accountNum,
 			String joinDate){
@@ -306,6 +306,42 @@ public class PersonDAO {
 		return aLJoinDate;
 		
 	}
+	
+	// 이름 입력시 해당 IdNum가져오는 메소드
+		public int getPersonIdNum(String name) {
+			int num = -1;
+			int IdNum=0;
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				// 해당 드라이버를 메모리에 업로드
+				conn = DriverManager.getConnection(url, id, pw);
+				String sql1 = "select IdNum from PInfo where name = ?";
+				pstmt = conn.prepareStatement(sql1);
+				pstmt.setString(1, name);
+
+				num = pstmt.executeUpdate();
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) { 
+					IdNum = rs.getInt(1);
+				}
+
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return IdNum;
+		}
 
 	public ArrayList<PersonVO> getpersoninfo(String selected) {
 		PersonVO vo = null;
