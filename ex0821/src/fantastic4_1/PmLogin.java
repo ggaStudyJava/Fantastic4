@@ -1,4 +1,4 @@
-package fantastic4_1;
+ package fantastic4_1;
 
 
 import java.awt.EventQueue;

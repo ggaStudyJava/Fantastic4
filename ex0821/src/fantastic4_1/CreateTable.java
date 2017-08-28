@@ -75,12 +75,6 @@ public class CreateTable {
 				pstmt = conn.prepareStatement(createPInfo);
 				num = pstmt.executeUpdate();
 				
-				pstmt2 = conn.prepareStatement(createpayment);
-				num = pstmt2.executeUpdate();
-//				System.out.println("1");
-				pstmt3 = conn.prepareStatement(createmonth);
-				num = pstmt3.executeUpdate();
-				
 				pstmt4 = conn.prepareStatement(createSeq_Account);
 				num = pstmt4.executeUpdate();
 				
@@ -93,6 +87,11 @@ public class CreateTable {
 				pstmt7 = conn.prepareStatement(createSeq_Lap);
 				num = pstmt7.executeUpdate();
 				
+				pstmt2 = conn.prepareStatement(createpayment);
+				num = pstmt2.executeUpdate();
+//				System.out.println("1");
+				pstmt3 = conn.prepareStatement(createmonth);
+				num = pstmt3.executeUpdate();	
 				
 				
 				
@@ -100,6 +99,10 @@ public class CreateTable {
 
 			} finally {
 				try {
+					if (pstmt3 != null)
+						pstmt3.close();
+					if (pstmt2 != null)
+						pstmt2.close();
 					if (pstmt7 != null)
 						pstmt7.close();
 					if (pstmt6 != null)
@@ -108,10 +111,6 @@ public class CreateTable {
 						pstmt5.close();
 					if (pstmt4 != null)
 						pstmt4.close();
-					if (pstmt3 != null)
-						pstmt3.close();
-					if (pstmt2 != null)
-						pstmt2.close();
 					if (pstmt != null)
 						pstmt.close();
 					if (conn != null)

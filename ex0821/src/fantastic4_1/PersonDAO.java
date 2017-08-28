@@ -30,6 +30,7 @@ public class PersonDAO {
 			String position, String license, String accountNum, String joinDate) {
 
 		String IdNum = setIdSequence(division)+".NEXTVAL,";//자동 시퀀스로 사번 생성하게 함****등록안됨
+		
 		System.out.println(IdNum);
 		int num = -1;
 		try {
@@ -114,8 +115,6 @@ public class PersonDAO {
 		return seq;
 	}
 
-
-	
 	
 	// 사원 삭제(바로 삭제 되게 설정함)
  	public int deletePerson(int IdNum) {

@@ -19,68 +19,98 @@ public class PaymentDAO {
 	private String user = "fantastic4";
 	private String password = "123456";
 
+	// 세율
+	private double Tax = 10;
 	public final int OvWorkPay = 30000; // 초과근무수당
 
-	final int sawonpay = 30000000;
-	final int juimpay = 50000000;
-	final int daeripay = 70000000;
-	final int gwajangpay = 90000000;
-	final int chajangpay = 110000000;
-	final int bujangpay = 130000000;
-	final int esapay = 150000000;
-	final int sajangpay = 250000000;
+	private final int sawonPay = 30000000;
+	private final int juimPay = 50000000;
+	private final int daeriPay = 70000000;
+	private final int gwajangPay = 90000000;
+	private final int chajangPay = 110000000;
+	private final int bujangPay = 130000000;
+	private final int esaPay = 150000000;
+	private final int sajangPay = 250000000;
 
-	public int accumulateOverWorkTime(int IdNum, int OverWorkTime) {
-		int num = -1;
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			// 해당 드라이버를 메모리에 업로드
-			conn = DriverManager.getConnection(url, user, password);
-			String sql1 = "select overworktime from payment where IdNum = ?";
-			pstmt = conn.prepareStatement(sql1);
-			pstmt.setInt(1, IdNum);
-
-			num = pstmt.executeUpdate();
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) { // dayOverWorkTime을 DB에 있던 OverWorkTime와 합산
-				OverWorkTime += rs.getInt(1);
-			}
-
-			String sql2 = "update payment set OverWorkTime = ? where IdNum = ?";
-			pstmt2 = conn.prepareStatement(sql2);
-			pstmt2.setInt(1, OverWorkTime);
-			pstmt2.setInt(2, IdNum);
-
-			num = pstmt2.executeUpdate();
-			rs = pstmt2.executeQuery();
-
-		} catch (ClassNotFoundException e) {// try에서 에러가 발생할 경우 catch실행
-			e.printStackTrace(); // 오류를 콘솔창에 자세히 출력해줌
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (pstmt2 != null)
-					pstmt2.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	
+	// 초과근무
+		private int overPay = 30000; // 초과근무수당
+		private int overTime = 5; // 초과근무시간
+		private int totalOverTime = 0; // 총초과근무시간
+		
+		// 퇴직금
+		private int outPay = 0;		// 퇴직금
+		private int yearPay = 0;	// 연봉
+		private double realPay = 0;	// 실수령금
+			
+		public double getTax() {
+			return Tax;
 		}
-		sumOverWorkTime = OverWorkTime;
-		return OverWorkTime;
-	}
+		public void setTax(double tax) {
+			Tax = tax;
+		}
+		public int getOverTime() {
+			return overTime;
+		}
+		public void setOverTime(int overTime) {
+			this.overTime = overTime;
+		}
+		public int getTotalOverTime() {
+			return totalOverTime;
+		}
+		public void setTotalOverTime(int totalOverTime) {
+			this.totalOverTime = totalOverTime;
+		}
+		public int getSawonPay() {
+			return sawonPay;
+		}
+		public int getJuimPay() {
+			return juimPay;
+		}
+		public int getDaeriPay() {
+			return daeriPay;
+		}
+		public int getGwajangPay() {
+			return gwajangPay;
+		}
+		public int getChajangPay() {
+			return chajangPay;
+		}
+		public int getBujangPay() {
+			return bujangPay;
+		}
+		public int getEsaPay() {
+			return esaPay;
+		}
+		public int getSajangPay() {
+			return sajangPay;
+		}
 
-	public int overWorkPay(int OverWorkTime) {
-		return OvWorkPay * OverWorkTime;
-	}
+		public int getOverPay() {
+			return overPay;
+		}
+		public void setOverPay(int overPay) {
+			this.overPay = overPay;
+		}
+		public int getOutPay() {
+			return outPay;
+		}
+		public void setOutPay(int outPay) {
+			this.outPay = outPay;
+		}
+		public int getYearPay() {
+			return yearPay;
+		}
+		public void setYearPay(int yearPay) {
+			this.yearPay = yearPay;
+		}
+		public double getRealPay(int basePayment) {		
+			realPay = (basePayment + (overPay*overTime)) * ((1-Tax)/100);
+			return realPay;
+		}
+		public void setRealPay(int realPay) {
+			this.realPay = realPay;
+		}
 
-	public int sumoverWorkPay() {
-		return OvWorkPay * sumOverWorkTime;
-	}
 
 }

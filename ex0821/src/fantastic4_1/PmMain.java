@@ -660,12 +660,255 @@ public class PmMain {
 		panel_47.add(lbl_sumoverworkpay);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		tabbedPane.addTab("\uC5F0\uBD09 \uAD00\uB9AC", null, panel_3, null);
+		
+		JPanel panel_49 = new JPanel();
+		panel_49.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_15 = new JLabel("\uC774            \uB984");
+		panel_49.add(label_15);
+		
+		JPanel panel_50 = new JPanel();
+		panel_50.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_16 = new JLabel("\uC0AC  \uC6D0  \uBC88  \uD638");
+		panel_50.add(label_16);
+		
+		JPanel panel_51 = new JPanel();
+		panel_51.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_17 = new JLabel("\uBD80            \uC11C");
+		panel_51.add(label_17);
+		
+		JPanel panel_52 = new JPanel();
+		panel_52.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_18 = new JLabel("\uC9C1            \uCC45");
+		panel_52.add(label_18);
+		
+		JPanel panel_53 = new JPanel();
+		panel_53.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		// 연봉관리 초기화면 
+												
+		JLabel lbl_Name3 = new JLabel("lbl_Name3");
+		panel_53.add(lbl_Name3);
+		lbl_Name3.setText(" ");
+		
+		JPanel panel_54 = new JPanel();
+		panel_54.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_Idnum3 = new JLabel("lbl_Idnum3");
+		panel_54.add(lbl_Idnum3);
+		lbl_Idnum3.setText(" ");
+		
+		JPanel panel_55 = new JPanel();
+		panel_55.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_Division3 = new JLabel("lbl_Division3");
+		panel_55.add(lbl_Division3);
+		lbl_Division3.setText(" ");
+		
+		JPanel panel_56 = new JPanel();
+		panel_56.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_Position3 = new JLabel("lbl_Position3");
+		panel_56.add(lbl_Position3);
+		lbl_Position3.setText(" ");
+		
+		JPanel panel_57 = new JPanel();
+		panel_57.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_23 = new JLabel("\uAE30     \uBCF8     \uAE09");
+		panel_57.add(label_23);
+		
+		JPanel panel_58 = new JPanel();
+		panel_58.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_BasePay3 = new JLabel("lbl_Pay3");
+		panel_58.add(lbl_BasePay3);
+		lbl_BasePay3.setText(" ");
+		
+		JPanel panel_59 = new JPanel();
+		panel_59.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_24 = new JLabel("\uC138           \uC728");
+		panel_59.add(label_24);
+		
+		JPanel panel_60 = new JPanel();
+		panel_60.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_Tax3 = new JLabel("lbl_Tax3");
+		panel_60.add(lbl_Tax3);
+		lbl_Tax3.setText(" ");
+		
+		JPanel panel_61 = new JPanel();
+		panel_61.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_overPay3 = new JLabel("lbl_overPay3");
+		panel_61.add(lbl_overPay3);
+		lbl_overPay3.setText(" ");
+		
+		JPanel panel_62 = new JPanel();
+		panel_62.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_27 = new JLabel("\uCD08\uACFC\uADFC\uBB34\uC218\uB2F9");
+		panel_62.add(label_27);
+		
+		JPanel panel_63 = new JPanel();
+		panel_63.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_realPay3 = new JLabel("lbl_realPay3");
+		panel_63.add(lbl_realPay3);
+		lbl_realPay3.setText(" ");
+		
+		JPanel panel_64 = new JPanel();
+		panel_64.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_29 = new JLabel("\uC2E4 \uC218 \uB839 \uAE08");
+		panel_64.add(label_29);
+		
+		JPanel panel_65 = new JPanel();
+		panel_65.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_30 = new JLabel("\uD1F4    \uC9C1    \uAE08");
+		panel_65.add(label_30);
+		
+		JPanel panel_66 = new JPanel();
+		panel_66.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_outPay3 = new JLabel("lbl_outPay3");
+		panel_66.add(lbl_outPay3);
+		lbl_outPay3.setText(" ");
+		
+		JPanel panel_67 = new JPanel();
+		panel_67.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_yearPay3 = new JLabel("lbl_yearPay3");
+		panel_67.add(lbl_yearPay3);
+		lbl_yearPay3.setText(" ");
+		
+		JPanel panel_68 = new JPanel();
+		panel_68.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_33 = new JLabel("\uC5F0            \uBD09");
+		panel_68.add(label_33);
+		
+		JPanel panel_69 = new JPanel();
+		panel_69.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel label_19 = new JLabel("\uCD08\uACFC\uADFC\uBB34\uC2DC\uAC04");
+		panel_69.add(label_19);
+		
+		JPanel panel_70 = new JPanel();
+		panel_70.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JLabel lbl_overTime = new JLabel(" ");
+		panel_70.add(lbl_overTime);
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3
-				.setHorizontalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING).addGap(0, 944, Short.MAX_VALUE));
-		gl_panel_3.setVerticalGroup(gl_panel_3.createParallelGroup(Alignment.LEADING).addGap(0, 921, Short.MAX_VALUE));
-		panel_3.setLayout(gl_panel_3);
+		
+		gl_panel_3.setHorizontalGroup(
+				gl_panel_3.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel_3.createSequentialGroup()
+						.addGap(45)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel_3.createSequentialGroup()
+								.addComponent(panel_62, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+								.addGap(12)
+								.addComponent(panel_61, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_panel_3.createSequentialGroup()
+									.addComponent(panel_69, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+									.addGap(12)
+									.addComponent(panel_70, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel_3.createSequentialGroup()
+									.addComponent(panel_64, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+									.addGap(12)
+									.addComponent(panel_63, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel_3.createSequentialGroup()
+									.addComponent(panel_68, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+									.addGap(12)
+									.addComponent(panel_67, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel_3.createSequentialGroup()
+									.addComponent(panel_65, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+									.addGap(12)
+									.addComponent(panel_66, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_panel_3.createSequentialGroup()
+										.addComponent(panel_59, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+										.addGap(12)
+										.addComponent(panel_60, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_panel_3.createSequentialGroup()
+										.addComponent(panel_57, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+										.addGap(12)
+										.addComponent(panel_58, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_panel_3.createSequentialGroup()
+										.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+											.addComponent(panel_52, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+											.addComponent(panel_49, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+											.addComponent(panel_50, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+											.addComponent(panel_51, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+											.addComponent(panel_53, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
+											.addComponent(panel_54, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
+											.addComponent(panel_56, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE)
+											.addComponent(panel_55, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))))))
+						.addGap(486))
+			);
+			gl_panel_3.setVerticalGroup(
+				gl_panel_3.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel_3.createSequentialGroup()
+						.addGap(81)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_panel_3.createSequentialGroup()
+								.addComponent(panel_53, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+								.addGap(10)
+								.addComponent(panel_54, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel_3.createSequentialGroup()
+								.addComponent(panel_49, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+								.addGap(9)
+								.addComponent(panel_50, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_51, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_55, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_52, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_56, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addGap(34)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_57, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_58, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_59, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_60, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addGap(90)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_69, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_70, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_62, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_61, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addGap(82)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_64, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_63, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addGap(258)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_65, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_66, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addPreferredGap(ComponentPlacement.UNRELATED)
+						.addGroup(gl_panel_3.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_68, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panel_67, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+						.addContainerGap(362, Short.MAX_VALUE))
+			);
+			panel_3.setLayout(gl_panel_3);
 
 		JPanel panel_48 = new JPanel();
 		tabbedPane.addTab("New tab", null, panel_48, null);
@@ -715,6 +958,55 @@ public class PmMain {
 					// txt_accounts.setEnabled(false);
 					txt_license.setText(showperson.get(0).getLicense());
 					// txt_license.setEditable(false);
+					lbl_Name3.setText(showperson.get(0).getName());	// 이름 
+					lbl_Idnum3.setText(showperson.get(0).getIdNum()+"");	// 사번
+					lbl_Division3.setText(showperson.get(0).getDivision());	// 부서
+					lbl_Position3.setText(showperson.get(0).getPosition());	// 직책
+					
+					// 3페이지 급여관리
+					PaymentDAO payment = new PaymentDAO();
+					lbl_Tax3.setText(payment.getTax()+"");
+					lbl_overPay3.setText(payment.getOverPay()+"");
+					lbl_outPay3.setText(payment.getOutPay()+"");
+					// 기본급
+					int basePayment = 0;
+					switch(showperson.get(0).getPosition()){
+					case "사원":
+						basePayment = payment.getSawonPay();
+						break;
+					case "주임":
+						basePayment = payment.getJuimPay();
+						break;
+					case "대리":
+						basePayment = payment.getDaeriPay();
+						break;
+					case "과장":
+						basePayment = payment.getGwajangPay();
+						break;
+					case "차장":
+						basePayment = payment.getChajangPay();
+						break;
+					case "부장":
+						basePayment = payment.getBujangPay();
+						break;
+					case "상무이사":
+						basePayment = payment.getEsaPay();
+						break;
+					case "사장":
+						basePayment = payment.getSajangPay();
+						break;												
+					}
+					lbl_BasePay3.setText(basePayment+"");
+					
+					lbl_realPay3.setText(payment.getRealPay(basePayment)+"");
+					lbl_outPay3.setText(payment.getOutPay()+"");
+					lbl_yearPay3.setText(payment.getYearPay()+"");
+					
+					//PaymentDAO payment = new PaymentDAO(showperson.get(0).getDivision());
+				
+				
+				
+				
 				} else {
 
 				}
