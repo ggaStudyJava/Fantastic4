@@ -52,6 +52,7 @@ public class PersonDAO {
 			pstmt.setString(7, phoneNum);
 			pstmt.setString(8, license);
 			pstmt.setString(9, accountNum);
+			
 			num = pstmt.executeUpdate();
 			
 			

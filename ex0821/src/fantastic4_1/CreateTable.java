@@ -51,50 +51,50 @@ public class CreateTable {
 						+ "postion varchar(20) not null," + "joinDate date not null," + "birthDate date not null,"
 						+ "address varchar(50)," + "phoneNum varchar(20)," + "license varchar(20),"
 						+ "accountNum varchar(20))";
-
-				String createpayment = "create table payment " + "(idnum number not null primary key,"
-						+ "basepay number not null," + "overworktime number," + "serverancepay number)";
-				
-				String createmonth = "create table monthrecord (idnum number not null primary key)";
-				
+				String createpayment = "create table payment (idnum number not null primary key,"
+						+ "basepay number not null,"
+						+ "overworktime number,"
+						+ "serverancepay number,"
+						+ " FOREIGN KEY (idnum) REFERENCES pinfo (idnum))";
+				String createmonth = "create table monthrecord (idnum number not null primary key,"
+						+ "FOREIGN KEY (idnum) REFERENCES pinfo (idnum))";
 				//È¸°èÆÀ
-				String createSeq_Account = "create sequence seq_Account start with 1001, default increment by 1,"
-						+ "maxvalue 1999";
+				String createSeq_Account = "create sequence seq_Account start with 1001 increment by 1 maxvalue 1999";
 				//»ç¾÷Á¦¾ÈÆÀ
-				String createSeq_Proposal = "create sequence seq_Proposal start with 2001, default increment by 1,"
-						+ "maxvalue 2999";
-				
+				String createSeq_Proposal = "create sequence seq_Proposal start with 2001 increment by 1 maxvalue 2999";
+				System.out.println(createSeq_Proposal);
 				//¿µ¾÷1ÆÀ
-				String createSeq_Sales = "create sequence seq_Sales start with 3001, default increment by 1,"
-						+ "maxvalue 3999";
-				
+				String createSeq_Sales = "create sequence seq_Sales start with 3001 increment by 1 maxvalue 3999";
+				System.out.println(createSeq_Sales);
 				//¿¬±¸¼Ò 
-				String createSeq_Lap = "create sequence seq_Lap start with 4001, default increment by 1,"
-						+ "maxvalue 4999";
+				String createSeq_Lap = "create sequence seq_Lap start with 4001 increment by 1 maxvalue 4999";
+				System.out.println(createSeq_Lap);
 				
 				pstmt = conn.prepareStatement(createPInfo);
+<<<<<<< HEAD
 				num = pstmt.executeUpdate();
 				
+=======
+				num = pstmt.executeUpdate();				
+				pstmt2 = conn.prepareStatement(createpayment);
+				num = pstmt2.executeUpdate();				
+				pstmt3 = conn.prepareStatement(createmonth);
+				num = pstmt3.executeUpdate();
+>>>>>>> branch 'master' of https://github.com/jangchankyung/Fantastic4.git
 				pstmt4 = conn.prepareStatement(createSeq_Account);
 				num = pstmt4.executeUpdate();
-				
 				pstmt5 = conn.prepareStatement(createSeq_Proposal);
 				num = pstmt5.executeUpdate();
-				
 				pstmt6 = conn.prepareStatement(createSeq_Sales);
 				num = pstmt6.executeUpdate();
-				
 				pstmt7 = conn.prepareStatement(createSeq_Lap);
-				num = pstmt7.executeUpdate();
-				
+				num = pstmt7.executeUpdate();				
 				pstmt2 = conn.prepareStatement(createpayment);
 				num = pstmt2.executeUpdate();
 //				System.out.println("1");
 				pstmt3 = conn.prepareStatement(createmonth);
 				num = pstmt3.executeUpdate();	
-				
-				
-				
+
 			} catch (SQLException e) {
 
 			} finally {
